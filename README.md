@@ -1,27 +1,20 @@
-# Ng2tree
+# AngularTree Introduction
+  Developing a **Tree Component** Based On **Angular5+**. 
+  
+# Backgroud
+  When my company prepared to develop a new deveop platform(software), I realised it is a good 
+opportunity for me to open my Angular component. In this way, I can record my develop process and 
+manage my project. What's more, it does well in someone wanting to learn how to develop an Angular
+Component , or using a open-source Angular Tree Component.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# How Can I Used the Source Code
+## 1. Download the Source Code
+  This Project is Created by Angular CLI. I program this project by Visual Studio Code (**VS Code**).
+## 2. Add node-modules Directory
+  When we create a project using Angular CLI, Angular CLI will download basic Depencies like 
+@angular, @ngtools. When uploaded my project to github, I found node-modules Directory has too many 
+directories and files. Because of that, I choose do not upload node-modules Directory. So, if you want 
+to run this project, you have to move a node-modules Directory from another Angular project created by
+Anlular CLI.
+## 3. Run this Project By Angular CLI
+  In this step, you can use your experience in Angular CLI project to run or debug this Project.
