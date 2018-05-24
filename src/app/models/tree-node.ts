@@ -1,12 +1,10 @@
 import { TreeModel } from './tree-model';
-import { tryParse } from 'selenium-webdriver/http';
-
-const childField: string = 'children';
+import { TreeOptions } from './tree-options';
 export class TreeNode{
     treeModel: TreeModel;
     parent: TreeNode;
+    options:TreeOptions;
     level: number;
-    localChildren:TreeNode[];
 
     constructor( data, parent:TreeNode = null, treeModel:TreeModel){
         
@@ -14,20 +12,31 @@ export class TreeNode{
         
         this.treeModel = treeModel;
         this.parent = parent;
+        this.options = treeModel.options;
         this.level = this.parent ? this.parent.level + 1 : 0;
         
-        this.localChildren = this.getLocalChildren(parent,treeModel);
+        this.childrenField = this.childrenField.map(child => new TreeNode(child,this,treeModel) );
     }
     
-    private getLocalChildren(parent:TreeNode, treeModel:TreeModel): TreeNode[] {
-        let nodes:TreeNode[] = [];
+    get childrenField() {
+        return this[this.options.childrenField] || [];
+    }
+    
+    set childrenField(value) {
+        this[this.options.childrenField] = value;
+    }
 
-        let valueChildField = this[childField];
-        if(valueChildField === undefined || valueChildField ===null){
-            return;
-        }
-        nodes = this[childField]
-            .map(child => new TreeNode(child,this,treeModel) );
-        return nodes; 
+    get displayField(){
+        return this[this.options.displayField];
+    }
+
+    nextNode(){
+         
+    }
+
+    // 切换方法
+    // 切换节点的折叠（Collapsed）与扩展（Expanded）状态
+    toggle(){
+        //
     }
 }
