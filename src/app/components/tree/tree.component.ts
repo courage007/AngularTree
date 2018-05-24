@@ -4,13 +4,13 @@ import { KEYS } from '../../constants/keys';
 import { pick, includes } from 'lodash';//将lodash安装到node-modules中，实现按需引入
 
 //约定使用下划线表示lodash，就像用$表示jQuery一样
-// require关键字不被识别：
+//1.require关键字不被识别：
 // https://stackoverflow.com/questions/31173738/typescript-getting-error-ts2304-cannot-find-name-require
 // declare var require: any
 // const _ = require('lodash');
-// 安装lodash的es版本：
-// $>npm i lodash-es
-// npm 
+//2.安装lodash的es版本：
+// (1) $>npm i lodash-es
+// (2) $>npm install --save @types/lodash
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
@@ -37,7 +37,9 @@ export class TreeComponent implements OnChanges{
           events: pick(this, this.treeModel.eventNames)
       });
     }
-    //优先使用HostListener装饰器绑定事件，而不是使用Directive或Component的host元数据
+    // 优先使用HostListener装饰器绑定事件，而不是使用Directive或Component的host元数据
+    // When binging events to Directive or Component, Angular suggests to prefer to HostListener decorator, 
+    // rather than host metadata.
     @HostListener('body: keydown', ['$event']) onKeydown($event) {
       // alert('Pressed a key');
       let focusedNode = this.treeModel.focusedNode;
@@ -56,23 +58,23 @@ export class TreeComponent implements OnChanges{
           return this.treeModel.focusPreviousNode();
   
         case KEYS.LEFT:
-          alert('Focus Drill Up');
-          // if (focusedNode.isExpanded) {
-          //   focusedNode.toggle();
-          // }
-          // else {
-          //   this.treeModel.focusDrillUp();
-          // }
+          // alert('Focus Drill Up');
+          if (focusedNode.isExpanded) {
+            focusedNode.toggle();
+          }
+          else {
+            this.treeModel.focusDrillUp();
+          }
           return;
   
         case KEYS.RIGHT:
           // alert('Focus Drill Down');
-          // if (focusedNode.isCollapsed) {
-          //   focusedNode.toggle();
-          // }
-          // else {s
-          //   this.treeModel.focusDrillDown();
-          // }
+          if (focusedNode.isCollapsed) {
+            focusedNode.toggle();
+          }
+          else {
+            this.treeModel.focusDrillDown();
+          }
           return;
   
         case KEYS.ENTER:
@@ -90,5 +92,4 @@ export class TreeComponent implements OnChanges{
         this.treeModel.setFocus(false);
       }
     }
-
 }
