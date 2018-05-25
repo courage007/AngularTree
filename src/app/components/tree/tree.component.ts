@@ -1,5 +1,6 @@
-import { Component, OnChanges, Input, EventEmitter, HostListener } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { TreeModel } from '../../models/tree-model';
+import { TreeOptions } from '../../models/tree-options';
 import { KEYS } from '../../constants/keys';
 import { pick, includes } from 'lodash';//将lodash安装到node-modules中，实现按需引入
 
@@ -20,14 +21,23 @@ export class TreeComponent implements OnChanges{
     // delegating to TreeModel service:
     _nodes:any[];
     @Input() set nodes(nodes:any[]) { };
-  
+    _options:TreeOptions;
+    @Input() set options(options:TreeOptions) { };
+    
     @Input() set focused(value:boolean) {
       this.treeModel.setFocus(value);
       // alert('focused on the tree');
     }
+
+    @Output() onToggle;
+    @Output() onActiveChanged;
+    @Output() onActivate;
+    @Output() onDeactivate;
+    @Output() onFocus;
+    @Output() onBlur;
   
     constructor(public treeModel:TreeModel) { 
-      treeModel.eventNames.forEach((name) => this[name] = new EventEmitter());
+      treeModel.eventNames.forEach((name) => this[name] = new EventEmitter());//eventName -> new EventEmitter()
     }
 
     ngOnChanges(changes) {
@@ -80,13 +90,12 @@ export class TreeComponent implements OnChanges{
         case KEYS.ENTER:
         case KEYS.SPACE:
           // alert('Enter or Space key.');
-          return;
-          //   return focusedNode && focusedNode.toggleActivated();
+          return focusedNode && focusedNode.toggleActivated();
       }
     }
 
     @HostListener('body: mousedown', ['$event'])  onMousedown($event) {
-      alert('click');
+      // alert('click');
       let insideClick = $event.target.closest('app-tree');//判断当前dom树上下文中是否包含树组件
       if (!insideClick) {
         this.treeModel.setFocus(false);

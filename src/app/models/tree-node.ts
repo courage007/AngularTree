@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { TreeModel } from './tree-model';
 import { TreeOptions } from './tree-options';
 import { first,last } from 'lodash';
@@ -12,6 +13,7 @@ export class TreeNode{
     parent: TreeNode;
     level: number;
     isVirtualRoot: boolean = false;
+    elementRef:ElementRef;
     
     _isActive: boolean = false;
     get isActive(){
@@ -28,6 +30,7 @@ export class TreeNode{
         
         this.childrenField = this.childrenField.map(child => new TreeNode(child,this,treeModel) );
     }
+
     // Proxy of treeModel
     get options() { return this.treeModel.options }
     fireEvent(event) { 
@@ -48,7 +51,8 @@ export class TreeNode{
 
     get isRoot() { return this.parent.isVirtualRoot }
     get realParent() { return this.isRoot ? null : this.parent }
-
+    get isLeaf() { return !this.childrenField.length }
+    get hasChildren() { return !this.isLeaf }
 
     getFirstChild() {
         return this.childrenField && this.childrenField[0];

@@ -21,12 +21,37 @@ export class TreeModel {
 
         const VirtualRoot = new TreeNode({ isVirtualRoot:true }, null,this);
 
-        this.roots = nodes.map(child=>new TreeNode(child,VirtualRoot,this));
+        this.roots = nodes && nodes.map(child=>new TreeNode(child,VirtualRoot,this));
 
         VirtualRoot[this.options.childrenField] = this.roots;//
 
+        this._loadTreeNodeContentComponent();
+
         this.events = events;
     }
+
+    private _treeNodeContentComponent:any;
+    get treeNodeContentComponent() { return this._treeNodeContentComponent };
+    // if treeNodeTemplate is a component - use it,
+    // otherwise - it's a template, so wrap it with an AdHoc component
+    _loadTreeNodeContentComponent() {
+        this._treeNodeContentComponent = this.options.treeNodeTemplate;
+        if (typeof this._treeNodeContentComponent === 'string') {
+        // this._treeNodeContentComponent = this._createAdHocComponent(this._treeNodeContentComponent);
+        }
+    }
+
+    // _createAdHocComponent(templateStr) {
+    //     @Component({
+    //         selector: 'TreeNodeTemplate',
+    //         template: templateStr
+    //     })
+    //     class AdHocTreeNodeTemplateComponent {
+    //         @Input() node: TreeNode;
+    //     }
+    //     return AdHocTreeNodeTemplateComponent;
+    // }
+
     isFocused()
     {
         return TreeModel.focusedTree === this;

@@ -1,5 +1,6 @@
 <div class="tree">
     <app-treenode
+      (click)="treeModel.setFocus(true)"
       *ngFor="let child of treeModel.roots"
       [node]="child">
       </app-treenode>

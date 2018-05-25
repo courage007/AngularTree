@@ -1,22 +1,35 @@
 import { Component } from '@angular/core';
 
+const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  styles: [
+    `button: {
+      line - height: 24px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 2px;
+      background: #A3D9F5;
+      cursor: pointer;
+      margin: 0 3px;
+    }`
+  ],
 })
 export class AppComponent {
   title = 'app';
   nodes = [
     {
-        name: 'root0',
+        name: 'root1',
         subTitle: 'the root',
         children: [
             {
-                name: 'child1',
+                name: 'child1.1',
                 subTitle: 'a good child'
             }, {
-                name: 'child2',
+                name: 'child1.2',
                 subTitle: 'a bad child',
             }
         ]
@@ -34,7 +47,8 @@ export class AppComponent {
           children: [
               {
                   name: 'subsub',
-                  subTitle: 'subsub'
+                  subTitle: 'subsub',
+                  children: []
               }
           ]
         }
@@ -42,7 +56,7 @@ export class AppComponent {
     }
   ];
 
-  nodes1 = [
+  nodes0 = [
     {
       name: 'root1',
       children: [
@@ -64,5 +78,15 @@ export class AppComponent {
     { name: 'root5', children: null }
   ];
 
+  customNameFieldOptions = { displayField: 'subTitle' };
+  customTemplateOptions = { treeNodeTemplate: MyTreeNodeTemplate };
+  customTemplateStringOptions = { treeNodeTemplate: CUSTOM_TEMPLATE_STRING }
+  onEvent = ($event) => console.log($event);
 
+}
+
+@Component({
+  template: CUSTOM_TEMPLATE_STRING
+})
+class MyTreeNodeTemplate {
 }
