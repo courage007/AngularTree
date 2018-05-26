@@ -105,43 +105,43 @@ export class TreeNode{
         this._isActive = true;
         this.fireEvent({ eventName: TREE_EVENTS.onActivate, node: this });
         this.focus();
-      }
+    }
     
-      private _deactivate() {
+    private _deactivate() {
         this._isActive = false;
         this.fireEvent({ eventName: TREE_EVENTS.onDeactivate, node: this });
-      }
-    
-      toggleActivated() {
+    }
+
+    toggleActivated() {
         if (this.isActive) {
-          this._deactivate();
-          this.treeModel.activeNode = null;
+            this._deactivate();
+            this.treeModel.activeNode = null;
         }
         else {
-          if (this.treeModel.activeNode) {
+            if (this.treeModel.activeNode) {
             this.treeModel.activeNode._deactivate();
-          }
-          this._activate();
-          this.treeModel.activeNode = this;
+            }
+            this._activate();
+            this.treeModel.activeNode = this;
         }
         this.fireEvent({ eventName: TREE_EVENTS.onActiveChanged, node: this, isActive: this.isActive });
-      }
-    
-      focus() {
+    }
+
+    focus() {
         let previousNode = this.treeModel.focusedNode;
         this.treeModel.focusedNode = this;
         if (previousNode) {
-          this.fireEvent({ eventName: TREE_EVENTS.onBlur, node: previousNode });
+            this.fireEvent({ eventName: TREE_EVENTS.onBlur, node: previousNode });
         }
         this.fireEvent({ eventName: TREE_EVENTS.onFocus, node: this });
-      }
-    
-      blur() {
+    }
+
+    blur() {
         let previousNode = this.treeModel.focusedNode;
         this.treeModel.focusedNode = null;
         if (previousNode) {
-          this.fireEvent({ eventName: TREE_EVENTS.onBlur, node: this });
+            this.fireEvent({ eventName: TREE_EVENTS.onBlur, node: this });
         }
-      }
+    }
 }
 

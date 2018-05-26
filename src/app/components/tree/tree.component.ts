@@ -101,4 +101,10 @@ export class TreeComponent implements OnChanges{
         this.treeModel.setFocus(false);
       }
     }
+    
+    // 鼠标悬浮在控件中（使用css样式的hover属性解决）
+    // @HostListener('body:mouseover',['$event']) onmouseover($event){
+    //   // alert('mouseover')
+    //   let insideElement = $event.target;
+    // }
 }

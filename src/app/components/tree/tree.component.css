@@ -6,3 +6,4 @@
   -ms-user-select: none;       /* IE/Edge */
   user-select: none;           /* non-prefixed version, currently not supported by any browser */
 }
+.tree:hover { background:rgb(240, 161, 130) }

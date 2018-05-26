@@ -1,38 +1,30 @@
-<!-- <div class="tree-children"
-  *ngIf="node">
-  {{  node.displayField }}
-  <app-treenode
-    *ngFor="let child of node.childrenField"
-    [node]="child">
-    </app-treenode>
-  </div> -->
-
   <div class="tree-node tree-node-level-{{ node.level }}"
   [class.tree-node-expanded]="node.isExpanded && node.hasChildren"
   [class.tree-node-collapsed]="node.isCollapsed && node.hasChildren"
   [class.tree-node-leaf]="node.isLeaf"
   [class.tree-node-active]="node.isActive"
   [class.tree-node-focused]="node.isFocused">
+  
   <span
     *ngIf="node.hasChildren"
-    class="toggle-children"
-    (click)="node.toggle()">
+    class="toggle-children">
   </span>
   <span
     *ngIf="!node.hasChildren"
     class="toggle-children-placeholder">
   </span>
-  <div class="node-content-wrapper" (click)="node.toggleActivated()">
-    <!-- <span #treeNodeContent></span> -->
-    <!-- <span>{{node.displayField}}</span> -->
-    <!-- 设置动态组件的放置锚点 -->
+
+  <div class="node-content-wrapper" 
+    (click)="node.toggleActivated()"
+    (click)="node.toggle()">
+    <!-- 设置动态组件的锚点 -->
     <ng-template treeNodeContent-host></ng-template> 
   </div>
+  
   <div class="tree-children" [hidden]="node.isCollapsed">
     <app-treenode
       *ngFor="let child of node.childrenField"
-      [node]="child"
-      (click)="child.toggle()">
+      [node]="child">
     </app-treenode>
   </div>
 </div>

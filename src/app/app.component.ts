@@ -53,6 +53,20 @@ export class AppComponent {
           ]
         }
       ]
+    },
+    {
+      name: 'root3',
+      subTitle: 'the third root',
+    },
+    { 
+      name: 'root4', 
+      subTitle: 'the four root',
+      children: [] 
+    },
+    { 
+      name: 'root5', 
+      subTitle: 'the five root',
+      children: null 
     }
   ];
 
@@ -81,7 +95,7 @@ export class AppComponent {
   customNameFieldOptions = { displayField: 'subTitle' };
   customTemplateOptions = { treeNodeTemplate: MyTreeNodeTemplate };
   customTemplateStringOptions = { treeNodeTemplate: CUSTOM_TEMPLATE_STRING }
-  onEvent = ($event) => console.log($event);
+  onEvent = ($event) => alert($event.node.subTitle);
 
 }
 

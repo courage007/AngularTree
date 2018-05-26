@@ -15,7 +15,7 @@ export class TreenodeComponent implements OnInit {
 
   @Input() node : TreeNode;
 
-  // ViewChild作用是什么
+  // ViewChild 是属性装饰器，用来从模板视图中获取匹配的元素
   @ViewChild(TreeNodeContentDirective) treeNodeContentHost: TreeNodeContentDirective;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
