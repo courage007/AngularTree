@@ -37,7 +37,7 @@ export class TreeComponent implements OnChanges{
     @Output() onBlur;
   
     constructor(public treeModel:TreeModel) { 
-      treeModel.eventNames.forEach((name) => this[name] = new EventEmitter());//eventName -> new EventEmitter()
+      treeModel.eventNames.forEach((name) => this[name] = new EventEmitter());//customEventName -> new EventEmitter()
     }
 
     ngOnChanges(changes) {
@@ -102,9 +102,4 @@ export class TreeComponent implements OnChanges{
       }
     }
     
-    // 鼠标悬浮在控件中（使用css样式的hover属性解决）
-    // @HostListener('body:mouseover',['$event']) onmouseover($event){
-    //   // alert('mouseover')
-    //   let insideElement = $event.target;
-    // }
 }

@@ -33,7 +33,7 @@ export class TreenodeComponent implements OnInit {
   // 解决使用动态组件出现ExpressionChangedAfterItHasBeenCheckedError问题：
   // https://github.com/angular/angular/issues/17572
   _loadTreeNodeContent() {
-    //使用Item从逻辑上将TreeNodeContentComponent和data关联起来
+    // 使用Item从逻辑上将TreeNodeContentComponent和data关联起来
     let treeNodeContentItem: TreeNodeContentItem = new TreeNodeContentItem(
       TreeNodeContentComponent,this.node.displayField);
     

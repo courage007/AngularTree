@@ -94,11 +94,12 @@ export class TreeModel {
     }
 
     fireEvent(event) {
-        // https://stackoverflow.com/questions/35840576/difference-between-eventemitter-next-and-eventemitter-emit-in-angular-2
+        // https://stackoverflow.com/questions/35840576/differencse-between-eventemitter-next-and-eventemitter-emit-in-angular-2
+        //  abandon next() function, begin to use emit() function
         // this.events[event.eventName].next(event);
-        // this.events[event.eventName].emit(event,alert(event.eventName));//重新生成event中对象？
+        // this.events[event.eventName].emit(event,alert(event.eventName));//发射事件，并传递事件的对象
         this.events[event.eventName].emit(event);
-        
+
     }
     
 }

@@ -53,6 +53,7 @@ export class TreeNode{
     get realParent() { return this.isRoot ? null : this.parent }
     get isLeaf() { return !this.childrenField.length }
     get hasChildren() { return !this.isLeaf }
+    get isFocused(){return this.treeModel.focusedNode == this}
 
     getFirstChild() {
         return this.childrenField && this.childrenField[0];

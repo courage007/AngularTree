@@ -95,12 +95,20 @@ export class AppComponent {
   customNameFieldOptions = { displayField: 'subTitle' };
   customTemplateOptions = { treeNodeTemplate: MyTreeNodeTemplate };
   customTemplateStringOptions = { treeNodeTemplate: CUSTOM_TEMPLATE_STRING }
-  onEvent = ($event) => alert($event.node.subTitle);
-
+  // onEvent = ($event) => alert($event.node.subTitle);
+  // onEvent = ($event) => console.log($event);
+  // 自定义事件处理器
+  toggleEventHandler = ($event) => console.log($event);
+  activateEventHandler = ($event) => console.log($event);
+  deactivateEventHandler = ($event) => console.log($event);
+  activeChangedEventHandler = ($event) => console.log($event);
+  focusEventHandler = ($event) => console.log($event);
+  blurEventHandler = ($event) => console.log($event);
 }
 
 @Component({
   template: CUSTOM_TEMPLATE_STRING
 })
 class MyTreeNodeTemplate {
+  
 }
