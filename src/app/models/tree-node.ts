@@ -20,9 +20,12 @@ export class TreeNode{
         return this._isActive;
     }
 
+
+
     constructor( data, parent:TreeNode = null, treeModel:TreeModel){
-        
-        Object.assign( this, data, {parent,treeModel} );
+        // 用于将对象可枚举属性的值复制到目标对象，并返回目标对象。
+        // 如果目标对象中的属性具有相同的键，则属性将被源中的属性覆盖。
+        Object.assign( this, data, {parent, treeModel} );
         
         this.treeModel = treeModel;
         this.parent = parent;
@@ -47,6 +50,9 @@ export class TreeNode{
 
     get displayField(){
         return this[this.options.displayField];
+    }
+    get treeNodeTemplate(){
+        return this[this.options.treeNodeTemplate];
     }
 
     get isRoot() { return this.parent.isVirtualRoot }

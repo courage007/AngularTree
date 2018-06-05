@@ -5,6 +5,7 @@ import { TreeNodeContentDirective } from '../../directives/tree-node-content.dir
 import { TreeNodeContentItem } from '../../models/tree-node-content-item';
 import { TreeNodeContentComponent } from '../tree-node-content/tree-node-content.component';
 import { tryParse } from 'selenium-webdriver/http';
+import { notEqual } from 'assert';
 
 @Component({
   selector: 'app-treenode',
@@ -22,9 +23,11 @@ export class TreenodeComponent implements OnInit {
     viewContainerRef: ViewContainerRef) {
       
   }
-
+  fileIconPath: string;
   ngOnInit() {
     this._loadTreeNodeContent();
+    let fileType: string = this.node['fileType'];
+    this.fileIconPath = this.node.isLeaf && fileType &&  '../../../assets/icons/file_type_' + fileType +'.svg';
   }
 
   ngOnChanges() {
@@ -34,8 +37,9 @@ export class TreenodeComponent implements OnInit {
   // https://github.com/angular/angular/issues/17572
   _loadTreeNodeContent() {
     // 使用Item从逻辑上将TreeNodeContentComponent和data关联起来
+    // 如何使用自定义StringTemplate还是个问题: 没能解决
     let treeNodeContentItem: TreeNodeContentItem = new TreeNodeContentItem(
-      TreeNodeContentComponent,this.node.displayField);
+      TreeNodeContentComponent, this.node.displayField);
     
     // 使用 ComponentFactoryResolver 来为每个具体的组件解析出一个 ComponentFactory 
     // 然后 ComponentFactory 会为每一个组件创建一个实例
@@ -46,7 +50,8 @@ export class TreenodeComponent implements OnInit {
 
     let componentRef = viewContainerRef.createComponent(componentFactory);
     
-    componentRef.instance.displayData = treeNodeContentItem.displayData;//传入数据
+    //传入数据
+    componentRef.instance.displayData = treeNodeContentItem.displayData;
 
   }
 

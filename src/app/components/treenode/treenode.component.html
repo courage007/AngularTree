@@ -18,6 +18,12 @@
   <div class="node-content-wrapper" 
     (click)="node.toggleActivated()"
     (click)="node.toggle()">
+    <!-- 设置文件图标 -->
+    <img
+    style="width: 1rem"
+    *ngIf="!node.hasChildren"
+    src={{fileIconPath}} 
+    >
     <!-- 设置动态组件的锚点 -->
     <ng-template treeNodeContent-host></ng-template> 
   </div>

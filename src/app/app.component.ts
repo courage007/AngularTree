@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+// 设置需要显示的值
 const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
 
 @Component({
@@ -20,34 +21,34 @@ const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
 })
 export class AppComponent {
   title = 'app';
-  nodes = [
+  nodes = [//json数组
     {
         name: 'root1',
-        subTitle: 'the root',
+        fileType: '0',//文件夹
         children: [
             {
                 name: 'child1.1',
-                subTitle: 'a good child'
+                fileType:'css',//css文件
+                fileIconPath:'',
             }, {
                 name: 'child1.2',
-                subTitle: 'a bad child',
+                fileType:'html',//html文件
             }
         ]
     },
     {
       name: 'root2',
-      subTitle: 'the second root',
       children: [
         {
           name: 'child2.1',
-          subTitle: 'new and improved'
+          fileType: 'git',//git文件
         }, {
           name: 'child2.2',
-          subTitle: 'new and improved2',
+          fileType: '0',//文件夹
           children: [
               {
                   name: 'subsub',
-                  subTitle: 'subsub',
+                  fileType: 'c',//c文件
                   children: []
               }
           ]
@@ -56,47 +57,24 @@ export class AppComponent {
     },
     {
       name: 'root3',
-      subTitle: 'the third root',
+      fileType: 'ts',//ts文件
     },
     { 
       name: 'root4', 
-      subTitle: 'the four root',
+      fileType: 'ts',//ts文件
       children: [] 
     },
     { 
       name: 'root5', 
-      subTitle: 'the five root',
+      fileType: 'ts',//ts文件
       children: null 
     }
-  ];
-
-  nodes0 = [
-    {
-      name: 'root1',
-      children: [
-        { name: 'child1' },
-        { name: 'child2' }
-      ]
-    },
-    {
-      name: 'root2',
-      children: [
-        { name: 'child2.1', children: [] },
-        { name: 'child2.2', children: [
-          {name: 'grandchild2.2.1'}
-        ] }
-      ]
-    },
-    { name: 'root3' },
-    { name: 'root4', children: [] },
-    { name: 'root5', children: null }
   ];
 
   customNameFieldOptions = { displayField: 'subTitle' };
   customTemplateOptions = { treeNodeTemplate: MyTreeNodeTemplate };
   customTemplateStringOptions = { treeNodeTemplate: CUSTOM_TEMPLATE_STRING }
-  // onEvent = ($event) => alert($event.node.subTitle);
-  // onEvent = ($event) => console.log($event);
+  
   // 自定义事件处理器
   toggleEventHandler = ($event) => console.log($event);
   activateEventHandler = ($event) => console.log($event);

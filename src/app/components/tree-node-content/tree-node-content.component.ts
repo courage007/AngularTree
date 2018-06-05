@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ITreeNodeContent } from './ITreeNodeContent';
+import { TreeNode } from '../../models/tree-node';
+import { TreenodeComponent } from '../treenode/treenode.component';
 
 @Component({
   selector: 'app-tree-node-content',
