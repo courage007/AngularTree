@@ -19,15 +19,16 @@ export class TreenodeComponent implements OnInit {
   // ViewChild 是属性装饰器，用来从模板视图中获取匹配的元素
   @ViewChild(TreeNodeContentDirective) treeNodeContentHost: TreeNodeContentDirective;
 
+  fileIconPath: string;
+
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
     viewContainerRef: ViewContainerRef) {
       
   }
-  fileIconPath: string;
+
   ngOnInit() {
     this._loadTreeNodeContent();
-    let fileType: string = this.node['fileType'];
-    this.fileIconPath = this.node.isLeaf && fileType &&  '../../../assets/icons/file_type_' + fileType +'.svg';
+    this._initNecesaryVariables();
   }
 
   ngOnChanges() {
@@ -53,6 +54,17 @@ export class TreenodeComponent implements OnInit {
     //传入数据
     componentRef.instance.displayData = treeNodeContentItem.displayData;
 
+  }
+
+  _initNecesaryVariables()
+  {
+    this._initFileIconPath();
+  }
+
+  _initFileIconPath()
+  {
+    let fileType: string = this.node['fileType'];//后续还得优化
+    this.fileIconPath = this.node.isLeaf && fileType &&  '../../../assets/icons/file_type_' + fileType +'.svg';
   }
 
 }
