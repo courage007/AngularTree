@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DATA } from '../app/constants/outsideData';
 
 const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
 
@@ -20,77 +21,7 @@ const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
 })
 export class AppComponent {
   title = 'app';
-  nodes = [
-    {
-        name: 'root1',
-        subTitle: 'the root',
-        children: [
-            {
-                name: 'child1.1',
-                subTitle: 'a good child'
-            }, {
-                name: 'child1.2',
-                subTitle: 'a bad child',
-            }
-        ]
-    },
-    {
-      name: 'root2',
-      subTitle: 'the second root',
-      children: [
-        {
-          name: 'child2.1',
-          subTitle: 'new and improved'
-        }, {
-          name: 'child2.2',
-          subTitle: 'new and improved2',
-          children: [
-              {
-                  name: 'subsub',
-                  subTitle: 'subsub',
-                  children: []
-              }
-          ]
-        }
-      ]
-    },
-    {
-      name: 'root3',
-      subTitle: 'the third root',
-    },
-    { 
-      name: 'root4', 
-      subTitle: 'the four root',
-      children: [] 
-    },
-    { 
-      name: 'root5', 
-      subTitle: 'the five root',
-      children: null 
-    }
-  ];
-
-  nodes0 = [
-    {
-      name: 'root1',
-      children: [
-        { name: 'child1' },
-        { name: 'child2' }
-      ]
-    },
-    {
-      name: 'root2',
-      children: [
-        { name: 'child2.1', children: [] },
-        { name: 'child2.2', children: [
-          {name: 'grandchild2.2.1'}
-        ] }
-      ]
-    },
-    { name: 'root3' },
-    { name: 'root4', children: [] },
-    { name: 'root5', children: null }
-  ];
+  nodes = DATA ; // Outside static Data
 
   customNameFieldOptions = { displayField: 'subTitle' };
   customTemplateOptions = { treeNodeTemplate: MyTreeNodeTemplate };
