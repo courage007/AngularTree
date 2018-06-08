@@ -14,10 +14,13 @@
     class="toggle-children-placeholder">
   </span>
 
-  <!-- 设置click事件的处理器 -->
+  <!-- 绑定事件对应处理器 -->
   <div class="node-content-wrapper" 
     (click)="node.toggleActivated()"
-    (click)="node.toggle()">
+    (click)="node.toggle()"
+    (dblclick)="node.doublClick($event)"
+    (contextmenu)="node.contextMenu($event)"
+    >
     <!-- 设置文件图标 -->
     <img
     class="tree-node-icon"

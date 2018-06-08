@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // 设置需要显示的值
 const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-file-tree-panel',
+  templateUrl: './file-tree-panel.component.html',
+  styleUrls: ['./file-tree-panel.component.css'],
   styles: [
     `button: {
       line - height: 24px;
@@ -19,25 +19,25 @@ const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
     }`
   ],
 })
-export class AppComponent {
+export class FileTreePanelComponent implements OnInit {
   title = 'app';
   nodes = [//json数组
     {
-        id: uuid(),
-        name: 'root1',
-        fileType: '0',//文件夹
-        children: [
-            {
-                id: uuid(),
-                name: 'child1.1',
-                fileType:'css',//css文件
-                fileIconPath:'',
-            }, {
-                id: uuid(),
-                name: 'child1.2',
-                fileType:'html',//html文件
-            }
-        ]
+      id: uuid(),
+      name: 'root1',
+      // fileType: '0',//文件夹
+      children: [
+        {
+          id: uuid(),
+          name: 'child1.1',
+          fileType: 'css',//css文件
+          // fileIconPath:'',
+        }, {
+          id: uuid(),
+          name: 'child1.2',
+          fileType: 'html',//html文件
+        }
+      ]
     },
     {
       id: uuid(),
@@ -52,12 +52,12 @@ export class AppComponent {
           name: 'child2.2',
           fileType: '0',//文件夹
           children: [
-              {
-                  id: uuid(),
-                  name: 'subsub',
-                  fileType: 'c',//c文件
-                  children: []
-              }
+            {
+              id: uuid(),
+              name: 'subsub',
+              fileType: 'c',//c文件
+              children: []
+            }
           ]
         }
       ]
@@ -67,24 +67,24 @@ export class AppComponent {
       name: 'root3',
       fileType: 'ts',//ts文件
     },
-    { 
+    {
       id: uuid(),
-      name: 'root4', 
+      name: 'root4',
       fileType: 'ts',//ts文件
-      children: [] 
+      children: []
     },
-    { 
+    {
       id: uuid(),
-      name: 'root5', 
+      name: 'root5',
       fileType: 'ts',//ts文件
-      children: null 
+      children: null
     }
   ];
 
   customNameFieldOptions = { displayField: 'subTitle' };
   customTemplateOptions = { treeNodeTemplate: MyTreeNodeTemplate };
   customTemplateStringOptions = { treeNodeTemplate: CUSTOM_TEMPLATE_STRING }
-  
+
   // 自定义事件处理器
   toggleEventHandler = ($event) => console.log($event);
   activateEventHandler = ($event) => console.log($event);
@@ -94,7 +94,9 @@ export class AppComponent {
   blurEventHandler = ($event) => console.log($event);
   doubleClickEventHandler = ($event) => alert('DoubleClick');
   contextMenuEventHandler = ($event) => alert('ContextMenu');
-  
+
+  ngOnInit(){}
+
 }
 let id = 0;
 function uuid() {
@@ -106,5 +108,5 @@ function uuid() {
   template: CUSTOM_TEMPLATE_STRING
 })
 class MyTreeNodeTemplate {
-  
+
 }

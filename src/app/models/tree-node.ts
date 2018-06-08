@@ -150,5 +150,19 @@ export class TreeNode{
             this.fireEvent({ eventName: TREE_EVENTS.onBlur, node: this });
         }
     }
+    // 双击事件
+    doublClick(rawEvent: MouseEvent) {
+        if(!this.hasChildren)
+        {
+            this.fireEvent({ eventName: TREE_EVENTS.onDoubleClick, node: this, rawEvent: rawEvent });
+        }
+    }
+    // 右键快捷菜单
+    contextMenu(rawEvent: MouseEvent) {
+        if (this.options.hasCustomContextMenu) {
+          rawEvent.preventDefault();
+        }
+        this.fireEvent({ eventName: TREE_EVENTS.onContextMenu, node: this, rawEvent: rawEvent });
+    }
 }
 

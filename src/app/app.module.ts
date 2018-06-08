@@ -8,6 +8,7 @@ import { TreenodeComponent } from './components/treenode/treenode.component';
 import { TreeModel } from './models/tree-model';
 import { TreeNodeContentComponent } from './components/tree-node-content/tree-node-content.component';
 import { TreeNodeContentDirective } from './directives/tree-node-content.directive';
+import { FileTreePanelComponent } from './components/file-tree-panel/file-tree-panel.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TreeNodeContentDirective } from './directives/tree-node-content.directi
     TreeComponent,
     TreenodeComponent,
     TreeNodeContentComponent,
-    TreeNodeContentDirective
+    TreeNodeContentDirective,
+    FileTreePanelComponent
   ],
   imports: [
     BrowserModule

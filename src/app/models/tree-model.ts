@@ -14,7 +14,7 @@ export class TreeModel {
     focusedNode: TreeNode = null;// be chosen node
     activeNode: TreeNode = null;// be chosen and actived node
     private events:any;
-    eventNames = Object.keys(TREE_EVENTS);
+    eventNames = Object.keys(TREE_EVENTS);//events used in tree.component
 
     setData({nodes,options, events}){
         this.options = new TreeOptions(options);
@@ -92,7 +92,7 @@ export class TreeModel {
         let nextNode = previousNode && previousNode.getFirstChild();
         nextNode && nextNode.focus();
     }
-
+    //emit the event
     fireEvent(event) {
         // https://stackoverflow.com/questions/35840576/differencse-between-eventemitter-next-and-eventemitter-emit-in-angular-2
         //  abandon next() function, begin to use emit() function
