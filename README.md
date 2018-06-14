@@ -1,6 +1,11 @@
 # AngularTree Introduction
   Developing a **Tree Component** Based On **Angular5+**. 
-  
+# Feature
+## 1. toggle: expand or collapse
+## 2. active: active or deactive
+## 3. focuse: focuse or blur 
+## 4. keys operations:down | up |  left | right | space | enter
+
 # Backgroud
   When my company prepared to develop a new deveop platform(software), I realised it is a good 
 opportunity for me to open my Angular component. In this way, I can record my develop process and 
