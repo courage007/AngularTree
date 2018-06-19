@@ -1,5 +1,6 @@
 # Contents
 - [AngularTree Introduction](#angulartree-introduction)
+- [Feature](#feature)
 - [Backgroud](#backgroud)
 - [How Can I Used the Source Code](#how-can-i-used-the-source-code)
 # AngularTree Introduction
