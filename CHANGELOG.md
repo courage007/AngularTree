@@ -5,4 +5,4 @@
 
 ## 1.0.0
    Build a basic tree, 2018.06.22
-   According to https://github.com/500tech/angular-tree-component V1.1.10, I rewrite myself angular tree.
+   According to https://github.com/500tech/angular-tree-component/tree/1.1.10, I rewrite myself angular tree.
