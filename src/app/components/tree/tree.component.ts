@@ -13,7 +13,7 @@ import { pick, includes } from 'lodash';//将lodash安装到node-modules中，�
 // (1) $>npm i lodash-es
 // (2) $>npm install --save @types/lodash
 @Component({
-  selector: 'app-tree',
+  selector: 'ng2tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.css']
 })

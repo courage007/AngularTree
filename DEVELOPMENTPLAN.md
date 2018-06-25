@@ -17,6 +17,10 @@ tree component.
 
 ## 4. Support to adjust CSS when expanding or collapsing the tree for developers
 
-## 5. Support dragable
+## 5. Support **dragable**
 
-## 6. Add Right-click shortcut enu
+## 6. Add Right-click shortcut **MenuContext**
+
+## 7. Support **loading** component when Loading data that the tree needed
+
+## 8. Adjust it's name when Panel that using the tree component resized.
