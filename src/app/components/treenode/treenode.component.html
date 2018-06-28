@@ -5,6 +5,12 @@
   [class.tree-node-active]="node.isActive"
   [class.tree-node-focused]="node.isFocused">
   
+  <ng2tree-node-drop-slot
+    *ngIf="nodeIndex === 0"
+    [dropIndex]="nodeIndex"
+    [node]="node.parent"
+  ></ng2tree-node-drop-slot>
+
   <span
     *ngIf="node.hasChildren"
     class="toggle-children">
