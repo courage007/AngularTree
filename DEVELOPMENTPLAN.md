@@ -1,11 +1,11 @@
 # Ng2tree(an angular tree component) Manifesto
-1 - Build a **Simple** and **Universal**  angular tree is No.1. What I want to in the beginning is 
+&nbsp;&nbsp;&nbsp;&nbsp;1 - Build a **Simple** and **Universal**  angular tree is No.1. What I want to do in the beginning is 
 to create a simple and universal tree. In order to achieving the goal, I prefer to only add necessary
 function. As we all know, if we improve the Universality, it will complicate the component.So I need to
 find rebalance in Simplicity and Universality.
 
 # Code Development Plan ( CDP )
-In order to develop a much more perfact tree, I collect demand from other public angular tree and my 
+&nbsp;&nbsp;&nbsp;&nbsp;In order to develop a much more perfact tree, I collect demand from other public angular tree and my 
 colleagues who need to use an angular tree component.
 What's more, I make a develop plan to coding in order which is helpful for anyone who want to use this 
 tree component.
@@ -17,7 +17,7 @@ tree component.
 
 ## 4. Support to  CSS  adjusted api when expanding or collapsing the tree for developers
 
-## 5. Support **dragable** (2018.06.28)
+## 5. Support **dragable** (DONE, 2018.06.28)
 
 ## 6. Add Right-click shortcut **ContextMenu**
 
