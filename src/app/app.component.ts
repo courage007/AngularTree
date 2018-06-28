@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { DATA } from '../app/constants/outsideData';
 
-const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,13 +17,17 @@ const CUSTOM_TEMPLATE_STRING = '{{ node.name }} ({{ node.subTitle }})';
     }`
   ],
 })
+
 export class AppComponent {
   title = 'app';
   nodes = DATA ; // Outside static Data
 
-  customNameFieldOptions = { displayField: 'subTitle' };
-  customTemplateOptions = { treeNodeTemplate: MyTreeNodeTemplate };
-  customTemplateStringOptions = { treeNodeTemplate: CUSTOM_TEMPLATE_STRING }
+  // Options 调整接口
+  customTemplateStringOptions = {
+    // displayField: 'subTitle',
+    allowDrag: false // 设置是否支持拖放
+  }
+
   // onEvent = ($event) => alert($event.node.subTitle);
   // onEvent = ($event) => console.log($event);
   // 自定义事件处理器
@@ -35,11 +37,5 @@ export class AppComponent {
   activeChangedEventHandler = ($event) => console.log($event);
   focusEventHandler = ($event) => console.log($event);
   blurEventHandler = ($event) => console.log($event);
-}
 
-@Component({
-  template: CUSTOM_TEMPLATE_STRING
-})
-class MyTreeNodeTemplate {
-  
 }

@@ -9,7 +9,16 @@ export const DATA = [
                 subTitle: 'a good child'
             }, {
                 name: 'child1.2',
-                subTitle: 'a bad child',
+                subTitle: 'a good child',
+            }, {
+              name: 'child1.3',
+              subTitle: 'a good child',
+            }, {
+              name: 'child1.4',
+              subTitle: 'a good child',
+            }, {
+              name: 'child1.5',
+              subTitle: 'a good child',
             }
         ]
     },
@@ -39,12 +48,12 @@ export const DATA = [
     },
     { 
       name: 'root4', 
-      subTitle: 'the four root',
+      subTitle: 'the fourth root',
       children: [] 
     },
     { 
       name: 'root5', 
-      subTitle: 'the five root',
+      subTitle: 'the fifth root',
       children: null 
     }
 ];

@@ -1,9 +1,13 @@
-import { extend } from 'lodash';
+import { ITreeOptions } from '../defs/api';
+
 export class TreeOptions {
-  childrenField:string = 'children';
-  displayField:string = 'name';
-  treeNodeTemplate:any = '{{ node.displayField }}';//插值表达式
-  constructor(options = {}) {//option是一个对象
-    extend(this, options);
+  get childrenField(): string { return this.options.childrenField || 'children'}
+  get displayField(): string { return this.options.displayField || 'name'}
+  get isExpandedField(): string { return this.options.isExpandedField || 'isExpanded'}
+  get treeNodeTemplate(): any { return this.options.treeNodeTemplate || '{{ node.displayField }}' }//插值表达式
+  get allowDrag(): boolean { return this.options.allowDrag }//是否启用拖拽功能
+
+  constructor(private options: ITreeOptions = {}) {//option是一个对象
+    // nothing need to do
   }
 }

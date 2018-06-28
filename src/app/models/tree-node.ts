@@ -20,7 +20,7 @@ export class TreeNode{
         return this._isActive;
     }
 
-    constructor( data, parent:TreeNode = null, treeModel:TreeModel){
+    constructor(public data, parent: TreeNode = null, treeModel: TreeModel){
         
         Object.assign( this, data, {parent,treeModel} );
         
@@ -30,6 +30,14 @@ export class TreeNode{
         
         this.childrenField = this.childrenField.map(child => new TreeNode(child,this,treeModel) );
     }
+
+    // getField(key) {
+    //     return this.data[this.options[`${key}Field`]];
+    // }
+
+    // setField(key, value) {
+    //     this.data[this.options[`${key}Field`]] = value;
+    // }
 
     // Proxy of treeModel
     get options() { return this.treeModel.options }
@@ -48,6 +56,11 @@ export class TreeNode{
     get displayField(){
         return this[this.options.displayField];
     }
+
+    allowDrag() {
+        return this.options.allowDrag;
+    }
+
 
     get isRoot() { return this.parent.isVirtualRoot }
     get realParent() { return this.isRoot ? null : this.parent }
@@ -93,6 +106,14 @@ export class TreeNode{
         return previousSibling.isCollapsed
           ? previousSibling
           : previousSibling.getLastChild();
+    }
+
+    isDescendantOf(node: TreeNode) {
+        if (this === node){
+            return true;
+        } else {
+            return this.parent && this.parent.isDescendantOf(node);
+        }
     }
 
     // 切换方法
@@ -143,6 +164,20 @@ export class TreeNode{
         if (previousNode) {
             this.fireEvent({ eventName: TREE_EVENTS.onBlur, node: this });
         }
+    }
+
+    dropMouseAction($event, data: any = null){
+        // 1.设置focus
+        this.treeModel.setFocus(true);
+        // 2.执行事件处理器
+        this._dropEventHandler(this.treeModel, this, $event, data);
+        // 3.完成drop操作后，重置drag状态
+        this.treeModel.cancelDrag();
+    }
+    private _dropEventHandler(tree: TreeModel, node: TreeNode, $event: any , 
+        to: { parentNode: TreeNode, index: number}){
+        tree.moveNode({ from: tree.getDragNode(), to });
+        // console.log("dropEventHandler:"+tree.roots);
     }
 }
 
