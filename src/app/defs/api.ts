@@ -22,4 +22,4 @@ export interface ITreeOptions {
      * Override tree node template. Default: '{{ node.displayField }}'
      */
     treeNodeTemplate?: any;
-} 
+}
