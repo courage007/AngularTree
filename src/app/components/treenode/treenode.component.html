@@ -13,7 +13,10 @@
 
   <span
     *ngIf="node.hasChildren"
-    class="toggle-children">
+    class="toggle-children"
+    (click)="node.toggleActivated()"
+    (click)="node.toggle()"
+    >
   </span>
   <span
     *ngIf="!node.hasChildren"
