@@ -1,0 +1,8 @@
+<div
+  class="node-drop-slot"
+  [class.is-dragging-over]="node.treeModel.isDraggingOver(this)"
+  (drop)="onDrop($event)"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave()"
+>
+</div>

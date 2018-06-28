@@ -15,17 +15,32 @@
   </span>
 
   <!-- 设置click事件的处理器 -->
-  <div class="node-content-wrapper" 
+  <div class="node-content-wrapper"
+    #nodeContentWrapper
     (click)="node.toggleActivated()"
-    (click)="node.toggle()">
+    (click)="node.toggle()"
+    [draggable]="node.allowDrag()"
+    (dragstart)="onDragStart($event)"
+    (drop)="onDrop($event)"
+    (dragend)="onDragEnd()"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave(nodeContentWrapper, $event)"
+    >
     <!-- 设置动态组件的锚点 -->
     <ng-template treeNodeContent-host></ng-template> 
   </div>
   
   <div class="tree-children" [hidden]="node.isCollapsed">
-    <app-treenode
-      *ngFor="let child of node.childrenField"
-      [node]="child">
-    </app-treenode>
+    <ng2tree-node
+      *ngFor="let child of node.childrenField; let i = index"
+      [node]="child"
+      [nodeIndex]="i">
+    </ng2tree-node>
   </div>
+
+  <ng2tree-node-drop-slot
+    [dropIndex]="nodeIndex + 1"
+    [node]="node.parent"
+  ></ng2tree-node-drop-slot>
+
 </div>

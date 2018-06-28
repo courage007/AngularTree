@@ -17,7 +17,7 @@ import { pick, includes } from 'lodash';//将lodash安装到node-modules中，�
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.css']
 })
-export class TreeComponent implements OnChanges{
+export class TreeComponent implements OnChanges {
     // delegating to TreeModel service:
     _nodes:any[];
     @Input() set nodes(nodes:any[]) { };

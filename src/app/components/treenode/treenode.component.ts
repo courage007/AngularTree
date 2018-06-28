@@ -4,16 +4,54 @@ import { TreeModel } from '../../models/tree-model';
 import { TreeNodeContentDirective } from '../../directives/tree-node-content.directive';
 import { TreeNodeContentItem } from '../../models/tree-node-content-item';
 import { TreeNodeContentComponent } from '../tree-node-content/tree-node-content.component';
-import { tryParse } from 'selenium-webdriver/http';
 
 @Component({
-  selector: 'app-treenode',
+  selector: 'ng2tree-node',
   templateUrl: './treenode.component.html',
   styleUrls: ['./treenode.component.css']
 })
 export class TreenodeComponent implements OnInit {
 
-  @Input() node : TreeNode;
+  @Input() node: TreeNode;
+  @Input() nodeIndex: number;
+
+  // TODO: move to draggable directive
+  onDragStart() {
+    // 设置DragNode: 选择dragNode的父节点作为DragNode，通过index定位到指定的节点
+    setTimeout(() => this.node.treeModel.setDragNode({ parentNode: this.node.parent, index: this.nodeIndex }), 30);
+  }
+
+  onDragEnd() {
+    this.node.treeModel.setDragNode(null);
+  }
+
+  onDragOver($event) {
+    $event.preventDefault();
+    this.node.treeModel.setDropLocation({ component: this, parentNode: this.node, index: 0 });
+  }
+
+  onDrop($event) {
+    $event.preventDefault();
+    // this.node.mouseAction('drop', $event, { node: this.node, index: 0 });
+    this.node.treeModel.setFocus(true);
+    this.node.dropMouseAction($event,{ parentNode: this.node, index: 0 });
+    console.log("onDrop: tree-node-component");
+  }
+
+  onDragLeave(nodeContentWrapper, $event) {
+    if (!this.node.treeModel.isDraggingOver(this)) {
+      return;
+    }
+    
+    const rect = nodeContentWrapper.getBoundingClientRect();
+
+    // If outside the element
+    if ($event.clientX < rect.left || $event.clientX > rect.right ||
+        $event.clientY < rect.top || $event.clientY > rect.bottom) {
+
+      this.node.treeModel.setDropLocation(null);
+    }
+  }
 
   // ViewChild 是属性装饰器，用来从模板视图中获取匹配的元素
   @ViewChild(TreeNodeContentDirective) treeNodeContentHost: TreeNodeContentDirective;
@@ -30,9 +68,11 @@ export class TreenodeComponent implements OnInit {
   ngOnChanges() {
 
   }
+
   // 解决使用动态组件出现ExpressionChangedAfterItHasBeenCheckedError问题：
   // https://github.com/angular/angular/issues/17572
   _loadTreeNodeContent() {
+
     // 使用Item从逻辑上将TreeNodeContentComponent和data关联起来
     let treeNodeContentItem: TreeNodeContentItem = new TreeNodeContentItem(
       TreeNodeContentComponent,this.node.displayField);
