@@ -15,11 +15,11 @@ tree component.
 
 ## 3. Add checkbox
 
-## 4. Support to adjust CSS when expanding or collapsing the tree for developers
+## 4. Support to  CSS  adjusted api when expanding or collapsing the tree for developers
 
-## 5. Support **dragable**
+## 5. Support **dragable** (2018.06.28)
 
-## 6. Add Right-click shortcut **MenuContext**
+## 6. Add Right-click shortcut **ContextMenu**
 
 ## 7. Support **loading** component when Loading data that the tree needed
 
