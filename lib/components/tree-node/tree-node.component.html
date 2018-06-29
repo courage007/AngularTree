@@ -1,0 +1,55 @@
+<div class="tree-node tree-node-level-{{ node.level }}"
+[class.tree-node-expanded]="node.isExpanded && node.hasChildren"
+[class.tree-node-collapsed]="node.isCollapsed && node.hasChildren"
+[class.tree-node-leaf]="node.isLeaf"
+[class.tree-node-active]="node.isActive"
+[class.tree-node-focused]="node.isFocused">
+
+<ng2tree-node-drop-slot
+  *ngIf="nodeIndex === 0"
+  [dropIndex]="nodeIndex"
+  [node]="node.parent"
+></ng2tree-node-drop-slot>
+
+<span
+  *ngIf="node.hasChildren"
+  class="toggle-children"
+  (click)="node.toggleActivated()"
+  (click)="node.toggle()"
+  >
+</span>
+<span
+  *ngIf="!node.hasChildren"
+  class="toggle-children-placeholder">
+</span>
+
+<!-- 设置click事件的处理器 -->
+<div class="node-content-wrapper"
+  #nodeContentWrapper
+  (click)="node.toggleActivated()"
+  (click)="node.toggle()"
+  [draggable]="node.allowDrag()"
+  (dragstart)="onDragStart($event)"
+  (drop)="onDrop($event)"
+  (dragend)="onDragEnd()"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave(nodeContentWrapper, $event)"
+  >
+  <!-- 设置动态组件的锚点 -->
+  <ng-template treeNodeContent-host></ng-template> 
+</div>
+
+<div class="tree-children" [hidden]="node.isCollapsed">
+  <ng2tree-node
+    *ngFor="let child of node.childrenField; let i = index"
+    [node]="child"
+    [nodeIndex]="i">
+  </ng2tree-node>
+</div>
+
+<ng2tree-node-drop-slot
+  [dropIndex]="nodeIndex + 1"
+  [node]="node.parent"
+></ng2tree-node-drop-slot>
+
+</div>

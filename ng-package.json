@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "title": "ng2tree-common",
+  "description": "JSON Schema for `ng-package.json` description file",
+  "lib": {
+    "entryFile": "public_api.ts"
+  }
+}
