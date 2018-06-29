@@ -1,31 +1,50 @@
 {
   "name": "ng2tree",
-  "version": "0.0.0",
+  "version": "1.0.1",
+  "description": "A Simple and Universal angular2+ tree component",
+  "author": "courage007 <wang_xufa@163.com>",
+  "homepage": "https://github.com/courage007/AngularTree",
   "license": "MIT",
+  "keywords": [
+    "ng2tree-common",
+    "ng2tree",
+    "ng2-tree",
+    "ng2 tree",
+    "ng tree",
+    "angular2tree",
+    "angular2-tree",
+    "angular2 tree",
+    "angular tree",
+    "angular2treecomponent",
+    "angular2-tree-component",
+    "angular2 tree component",
+    "angulartreecomponent",
+    "angular-tree-component",
+    "angular tree component",
+    "tree"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "packagr": "ng-packagr -p ng-package.json",
+    "clean": "npm run clean:typescript && rimraf node_modules && npm cache clean",
+    "clean:typescript": "rimraf dist"
   },
-  "private": true,
+  "private": false,
+  "readme": "https://github.com/courage007/AngularTree/blob/master/README.md",
+  "contributors": [
+    "courage007 <wang_xufa@163.com>"
+  ],
+  "peerDependencies": {
+    "@angular/common": ">=2.0.0",
+    "@angular/core": ">=2.0.0",
+    "core-js": "^2.4.1"
+  },
   "dependencies": {
-    "@angular/animations": "^5.2.0",
-    "@angular/common": "^5.2.0",
-    "@angular/compiler": "^5.2.0",
-    "@angular/core": "^5.2.11",
-    "@angular/forms": "^5.2.0",
-    "@angular/http": "^5.2.0",
-    "@angular/platform-browser": "^5.2.0",
-    "@angular/platform-browser-dynamic": "^5.2.0",
-    "@angular/router": "^5.2.0",
-    "@types/lodash": "^4.14.109",
-    "core-js": "^2.4.1",
-    "lodash-es": "^4.17.10",
-    "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.4",
@@ -45,6 +64,24 @@
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
+    "typescript": "~2.5.3",
+    "@angular/animations": "^5.2.0",
+    "@angular/common": "^5.2.0",
+    "@angular/compiler": "^5.2.0",
+    "@angular/core": "^5.2.11",
+    "@angular/forms": "^5.2.0",
+    "@angular/http": "^5.2.0",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/router": "^5.2.0",
+    "@types/lodash": "^4.14.109",
+    "core-js": "^2.4.1",
+    "lodash-es": "^4.17.10",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.19"
+  },
+  "repository": "https://github.com/courage007/AngularTree.git",
+  "bugs": {
+    "url": "https://github.com/courage007/AngularTree/issues"
   }
 }
