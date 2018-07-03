@@ -15,7 +15,7 @@ tree component.
 
 ## 3. Add checkbox
 
-## 4. Support to  CSS  adjusted api when expanding or collapsing the tree for developers
+## 4. Provide global CSS interface
 
 ## 5. Support **dragable** (**DONE**, 2018.06.28)
 
@@ -23,4 +23,6 @@ tree component.
 
 ## 7. Support **loading** component when Loading data that the tree needed
 
-## 8. Adjust it's name when Panel that using the tree component resized.
+## 8. Adjust it's name when Panel that using the tree component resized
+
+## 9. Support to memory the tree's state by redux or mobx framework
