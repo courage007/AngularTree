@@ -9,6 +9,8 @@
 (onActiveChanged)="activeChangedEventHandler($event)"
 (onFocus)="focusEventHandler($event)"
 (onBlur)="blurEventHandler($event)"
+(onDoubleClick)="doubleClickEventHandler($event)"
+(onContextMenu)="contextMenuEventHandler($event)"
 ></ng2tree>
 <br>
 <p>Keys:</p>
@@ -19,6 +21,7 @@ down | up | left | right | space | enter
 <button (click)="tree.treeModel.focusDrillDown()">drill down</button>
 <button (click)="tree.treeModel.focusDrillUp()">drill up</button>
 <button (click)="customTemplateStringOptions.allowDrag = true">allowDrag</button>
+<button (click)="customTemplateStringOptions.enableCustomContextMenu = true">enableCustomContextMenu</button>
 <p></p>
 <button
 [disabled]="!tree.treeModel.focusedNode"

@@ -61,6 +61,9 @@ export class TreeNode{
         return this.options.allowDrag;
     }
 
+    enableCustomContextMenu() {
+        return this.options.enableCustomContextMenu;
+    }
 
     get isRoot() { return this.parent.isVirtualRoot }
     get realParent() { return this.isRoot ? null : this.parent }
@@ -164,6 +167,22 @@ export class TreeNode{
         if (previousNode) {
             this.fireEvent({ eventName: TREE_EVENTS.onBlur, node: this });
         }
+    }
+    
+    // 双击事件
+    doublClick(rawEvent: MouseEvent) {
+        if(!this.hasChildren)
+        {
+            this.fireEvent({ eventName: TREE_EVENTS.onDoubleClick, node: this, rawEvent: rawEvent });
+        }
+    }
+    // 右键快捷菜单
+    contextMenu(rawEvent: MouseEvent) {
+        if (this.enableCustomContextMenu()) {//启用右键菜单功能后，禁用默认的右键菜单
+            rawEvent.preventDefault();
+        }
+
+        this.fireEvent({ eventName: TREE_EVENTS.onContextMenu, node: this, rawEvent: rawEvent }); 
     }
 
     dropMouseAction($event, data: any = null){

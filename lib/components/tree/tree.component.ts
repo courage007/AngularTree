@@ -35,6 +35,8 @@ export class TreeComponent implements OnChanges {
     @Output() onDeactivate;
     @Output() onFocus;
     @Output() onBlur;
+    @Output() onDoubleClick;
+    @Output() onContextMenu;
   
     constructor(public treeModel:TreeModel) { 
       treeModel.eventNames.forEach((name) => this[name] = new EventEmitter());//customEventName -> new EventEmitter()

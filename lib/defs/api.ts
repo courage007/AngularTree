@@ -19,7 +19,13 @@ export interface ITreeOptions {
      */
     allowDrag?: boolean;
     /**
+     * Enable Context-Menu on the tree. Default: false
+     */
+    enableCustomContextMenu?: boolean;
+    /**
      * Override tree node template. Default: '{{ node.displayField }}'
      */
     treeNodeTemplate?: any;
+
+    
 }

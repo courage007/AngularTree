@@ -25,7 +25,8 @@ export class AppComponent {
   // Options 调整接口
   customTemplateStringOptions = {
     // displayField: 'subTitle',
-    allowDrag: false // 设置是否支持拖放
+    allowDrag: false, //设置是否支持拖放
+    enableCustomContextMenu: false //设置是否启用自定义右键菜单
   }
 
   // onEvent = ($event) => alert($event.node.subTitle);
@@ -37,5 +38,7 @@ export class AppComponent {
   activeChangedEventHandler = ($event) => console.log($event);
   focusEventHandler = ($event) => console.log($event);
   blurEventHandler = ($event) => console.log($event);
+  doubleClickEventHandler = ($event) => console.log($event);
+  contextMenuEventHandler = ($event) => console.log("Show ContextMenu:with or without custom contex menu",$event);
 
 }
