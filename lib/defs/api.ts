@@ -3,6 +3,10 @@
 */
 export interface ITreeOptions {
     /**
+     * Override id field. Default: 'id'
+     */
+    idField?: string;
+    /**
      * Override children field. Default: 'children'
      */
     childrenField?: string;
@@ -10,6 +14,10 @@ export interface ITreeOptions {
      * Override display field. Default: 'name'
      */
     displayField?: string;
+    /**
+     * Override type field. Default: 'type'
+     */
+    typeField?: string;
     /**
      * Override isExpanded field. Default: 'isExpanded'
      */

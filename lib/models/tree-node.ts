@@ -1,14 +1,13 @@
 import { ElementRef } from '@angular/core';
 import { TreeModel } from './tree-model';
-import { TreeOptions } from './tree-options';
-import { first,last } from 'lodash';
 import { TREE_EVENTS } from '../constants/events';
 
 export class TreeNode{
-    private _isExpanded: boolean = false;// flag of Expand or Collapse
-    get isExpanded() { return this._isExpanded };//更简洁，更人性化
-    get isCollapsed(){ return !this._isExpanded };
-    
+    private _isExpanded: boolean;
+    get isExpanded(){return this._isExpanded}
+    set isExpanded(value){this._isExpanded = value}
+    get isCollapsed(){return !this._isExpanded}
+
     treeModel: TreeModel;
     parent: TreeNode;
     level: number;
@@ -27,6 +26,13 @@ export class TreeNode{
         this.treeModel = treeModel;
         this.parent = parent;
         this.level = this.parent ? this.parent.level + 1 : 0;
+        if(this.isExpandedField) {
+            this.isExpanded = true;
+        }
+        
+        // 验证字段添加
+        // console.log(this.idField);
+        // console.log(this.typeField);
         
         this.childrenField = this.childrenField.map(child => new TreeNode(child,this,treeModel) );
     }
@@ -45,6 +51,15 @@ export class TreeNode{
         this.treeModel.fireEvent(event)
     }
 
+    // 表现的更像一个字段，将其封装成属性，并根据开放的读写权限，设置get/set
+    get idField() {
+        return this[this.options.idField];
+    }
+    
+    set idField(value) {
+        this[this.options.idField] = value;
+    }
+
     get childrenField() {
         return this[this.options.childrenField] || [];
     }
@@ -57,7 +72,22 @@ export class TreeNode{
         return this[this.options.displayField];
     }
 
-    allowDrag() {
+    get typeField(){
+        return this[this.options.typeField];
+    }
+
+    set typeField(value){
+        this[this.options.typeField] = value;
+    }
+
+    get isExpandedField(){
+        return this[this.options.isExpandedField];
+    }
+    set isExpandedField(value){
+        this[this.options.isExpandedField] = value;
+    }
+
+    allowDrag() {//表现的更像一个动作，将其封装成方法
         return this.options.allowDrag;
     }
 
@@ -65,7 +95,7 @@ export class TreeNode{
         return this.options.enableCustomContextMenu;
     }
 
-    get isRoot() { return this.parent.isVirtualRoot }
+    get isRoot() { return this.parent.isVirtualRoot }//父节点为空，表示这个一个根节点
     get realParent() { return this.isRoot ? null : this.parent }
     get isLeaf() { return !this.childrenField.length }
     get hasChildren() { return !this.isLeaf }
@@ -122,7 +152,7 @@ export class TreeNode{
     // 切换方法
     // 切换节点的折叠（Collapsed）与扩展（Expanded）状态
     toggle() {
-        this._isExpanded = !this.isExpanded;
+        this.isExpanded = !this.isExpanded;
         this.fireEvent({ eventName: TREE_EVENTS.onToggle, node: this, isExpanded: this.isExpanded });
     }
 
@@ -171,11 +201,9 @@ export class TreeNode{
     
     // 双击事件
     doublClick(rawEvent: MouseEvent) {
-        if(!this.hasChildren)
-        {
-            this.fireEvent({ eventName: TREE_EVENTS.onDoubleClick, node: this, rawEvent: rawEvent });
-        }
+        this.fireEvent({ eventName: TREE_EVENTS.onDoubleClick, node: this, rawEvent: rawEvent });
     }
+
     // 右键快捷菜单
     contextMenu(rawEvent: MouseEvent) {
         if (this.enableCustomContextMenu()) {//启用右键菜单功能后，禁用默认的右键菜单
@@ -193,10 +221,10 @@ export class TreeNode{
         // 3.完成drop操作后，重置drag状态
         this.treeModel.cancelDrag();
     }
+
     private _dropEventHandler(tree: TreeModel, node: TreeNode, $event: any , 
         to: { parentNode: TreeNode, index: number}){
         tree.moveNode({ from: tree.getDragNode(), to });
         // console.log("dropEventHandler:"+tree.roots);
     }
 }
-

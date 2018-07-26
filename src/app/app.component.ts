@@ -38,7 +38,8 @@ export class AppComponent {
   activeChangedEventHandler = ($event) => console.log($event);
   focusEventHandler = ($event) => console.log($event);
   blurEventHandler = ($event) => console.log($event);
-  doubleClickEventHandler = ($event) => console.log($event);
-  contextMenuEventHandler = ($event) => console.log("Show ContextMenu:with or without custom contex menu",$event);
-
+  doubleClickEventHandler($event){
+    console.log("Double Click Handler. The event is:", $event);
+  }
+  contextMenuEventHandler = ($event) => console.log("Show ContextMenu:with or without custom contex menu", $event);
 }
