@@ -11,7 +11,7 @@ What's more, I make a develop plan to coding in order which is helpful for anyon
 tree component.
 ## 1. Build a **mix** tree and publish the tree in npm way(**DONE**, 2018.06.29)
 
-## 2. Add CRUD(Create、Retrieve、Update、Delete) API
+## 2. Add CRUD(Create、Retrieve、Update、Delete) API(**DONE**,only create and delete options Now, 2018.07.27)
 
 ## 3. Add checkbox
 
@@ -19,7 +19,7 @@ tree component.
 
 ## 5. Support **dragable** (**DONE**, 2018.06.28)
 
-## 6. Add Right-click shortcut **ContextMenu**
+## 6. Add Right-click shortcut **ContextMenu**(**DONE**, 2018.07.26)
 
 ## 7. Support **loading** component when Loading data that the tree needed
 
