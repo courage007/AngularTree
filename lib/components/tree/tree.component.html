@@ -1,4 +1,8 @@
 <div class="tree">
+    <!-- <div class="localFileTreeOperateTest">
+      <button (click)="treeModel.addStaticTreeNode()">新增</button>
+      <button (click)="treeModel.removeFocusedTreeNode()">删除</button>
+    </div> -->
     <ng2tree-node
       (click)="treeModel.setFocus(true)"
       *ngFor="let child of treeModel.roots; let i = index"

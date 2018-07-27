@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TreeNode } from './tree-node';
 import { TreeOptions } from './tree-options';
 import { TREE_EVENTS } from '../constants/events';
-import { first, last } from 'lodash';
+import { first, last, indexOf, findIndex, sortBy } from 'lodash';
 
 @Injectable()
 export class TreeModel {
@@ -49,6 +49,71 @@ export class TreeModel {
         } else {
             this.fireEvent({ eventName: TREE_EVENTS.onUpdateData });
         }
+    }
+
+    //Used for code test
+    addStaticTreeNode(){
+        this.createAndAddTreeNode({        
+            id: 1,
+            name: 'root1',
+            subTitle: 'the root',
+            type: 'type1'
+        },this.focusedNode);
+    }
+
+    createAndAddTreeNode(data, parentNode: TreeNode){
+        const createdNode = this.createTreeNode(data, parentNode);
+        this.addTreeNode(createdNode, parentNode);
+    }
+
+    createTreeNode(data, parent: TreeNode): TreeNode{
+        let createdNode =  new TreeNode(data, parent, this);
+        return createdNode;
+    }
+    
+    addTreeNode(addedNode: TreeNode, parentNode: TreeNode){
+        if(addedNode == null){
+            return;
+        }
+
+        if(parentNode == null){//增加顶级树节点（没有父节点的树节点）
+            this.roots.push(addedNode);
+        }else{
+            parentNode.childrenField.push(addedNode);
+        }
+
+        this.update(this.roots);
+
+        this.fireEvent({ eventName: TREE_EVENTS.onAddNode, addedNode, parentNode});
+    }
+
+    removeFocusedTreeNode(){
+        this.removeTreeNode(this.focusedNode);
+    }
+    
+    //移除选中的已知节点
+    removeTreeNode(selectedTreeNode: TreeNode){
+        if(selectedTreeNode == null){
+            return;
+        }
+
+        const parent = selectedTreeNode.parent;
+        if(parent == null){//移除顶级树节点（没有父节点的树节点）
+            let index = this.roots.indexOf(selectedTreeNode);
+            this.roots.splice(index, 1);//移除数组中某一指定节点
+        }else{
+            if(parent.childrenField.length <= 0){
+                console.log("RemoveTreeNode Warning: it is impossible to remove element from an empty array");
+                return;
+            }
+            //移除数组中某一指定节点
+            let index = parent.childrenField.indexOf(selectedTreeNode);
+            parent.childrenField.splice(index, 1);
+        }
+
+        this.update(this.roots);
+
+        this.fireEvent({ eventName: TREE_EVENTS.onRemoveNode, selectedTreeNode, parent});
     }
 
     private _treeNodeContentComponent:any;
