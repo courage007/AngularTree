@@ -1,28 +1,9 @@
 {
-  "name": "ng2tree-common",
-  "version": "2.0.0",
-  "description": "A Simple and Universal angular2+ tree component",
+  "name": "ng2tree-demo",
+  "version": "0.0.1",
+  "description": "A Simple and Universal angular2+ tree component Demo",
   "author": "courage007 <wang_xufa@163.com>",
-  "homepage": "https://github.com/courage007/AngularTree",
   "license": "MIT",
-  "keywords": [
-    "ng2tree-common",
-    "ng2tree",
-    "ng2-tree",
-    "ng2 tree",
-    "ng tree",
-    "angular2tree",
-    "angular2-tree",
-    "angular2 tree",
-    "angular tree",
-    "angular2treecomponent",
-    "angular2-tree-component",
-    "angular2 tree component",
-    "angulartreecomponent",
-    "angular-tree-component",
-    "angular tree component",
-    "tree"
-  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -35,7 +16,6 @@
     "clean:typescript": "rimraf dist"
   },
   "private": false,
-  "readme": "https://github.com/courage007/AngularTree/blob/master/README.md",
   "contributors": [
     "courage007 <wang_xufa@163.com>"
   ],
@@ -43,7 +23,9 @@
     "@angular/common": ">=2.0.0",
     "@angular/core": ">=2.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ng2tree-common": "^2.0.0"
+  },
   "devDependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/cli": "~1.7.4",
@@ -51,12 +33,9 @@
     "@angular/compiler": "^5.2.0",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/core": "^5.2.11",
-    "@angular/forms": "^5.2.0",
-    "@angular/http": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
-    "@angular/router": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/lodash": "^4.14.109",
@@ -71,7 +50,6 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "lodash-es": "^4.17.10",
-    "ng-packagr": "^3.0.3",
     "protractor": "~5.1.2",
     "rxjs": "^5.5.6",
     "ts-node": "~4.1.0",

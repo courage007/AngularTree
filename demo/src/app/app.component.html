@@ -1,0 +1,40 @@
+<ng2tree
+#tree
+[nodes]="nodes"
+[focused]="true"
+[options]="customTemplateStringOptions"
+(onToggle)="toggleEventHandler($event)"
+(onActivate)="activateEventHandler($event)"
+(onDeactivate)="deactivateEventHandler($event)"
+(onActiveChanged)="activeChangedEventHandler($event)"
+(onFocus)="focusEventHandler($event)"
+(onBlur)="blurEventHandler($event)"
+(onDoubleClick)="doubleClickEventHandler($event)"
+(onContextMenu)="contextMenuEventHandler($event)"
+></ng2tree>
+<br>
+<p>Keys:</p>
+down | up | left | right | space | enter
+<p>API:</p>
+<button (click)="tree.treeModel.focusNextNode()">next node</button>
+<button (click)="tree.treeModel.focusPreviousNode()">previous node</button>
+<button (click)="tree.treeModel.focusDrillDown()">drill down</button>
+<button (click)="tree.treeModel.focusDrillUp()">drill up</button>
+<button (click)="customTemplateStringOptions.allowDrag = true">allowDrag</button>
+<button (click)="customTemplateStringOptions.enableCustomContextMenu = true">enableCustomContextMenu</button>
+<p></p>
+<button
+[disabled]="!tree.treeModel.focusedNode"
+(click)="tree.treeModel.focusedNode.toggleActivated()">
+{{ tree.treeModel.focusedNode?.isActive ? 'deactivate' : 'activate' }}
+</button>
+<button
+[disabled]="!tree.treeModel.focusedNode"
+(click)="tree.treeModel.focusedNode.toggle()">
+{{ tree.treeModel.focusedNode?.isExpanded ? 'collapse' : 'expand' }}
+</button>
+<button
+[disabled]="!tree.treeModel.focusedNode"
+(click)="tree.treeModel.focusedNode.blur()">
+blur
+</button>

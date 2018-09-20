@@ -1,6 +1,7 @@
 import { ElementRef } from '@angular/core';
 import { TreeModel } from './tree-model';
 import { TREE_EVENTS } from '../constants/events';
+import { TreeOptions } from './tree-options';
 
 export class TreeNode{
     private _isExpanded: boolean;
@@ -37,16 +38,10 @@ export class TreeNode{
         this.childrenField = this.childrenField.map(child => new TreeNode(child,this,treeModel) );
     }
 
-    // getField(key) {
-    //     return this.data[this.options[`${key}Field`]];
-    // }
-
-    // setField(key, value) {
-    //     this.data[this.options[`${key}Field`]] = value;
-    // }
-
     // Proxy of treeModel
-    get options() { return this.treeModel.options }
+    get options(): TreeOptions{ 
+        return this.treeModel.options 
+    }
     fireEvent(event) { 
         this.treeModel.fireEvent(event)
     }
