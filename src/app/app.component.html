@@ -1,17 +1,18 @@
 <ng2tree
-#tree
-[nodes]="nodes"
-[focused]="true"
-[options]="customTemplateStringOptions"
-(onToggle)="toggleEventHandler($event)"
-(onActivate)="activateEventHandler($event)"
-(onDeactivate)="deactivateEventHandler($event)"
-(onActiveChanged)="activeChangedEventHandler($event)"
-(onFocus)="focusEventHandler($event)"
-(onBlur)="blurEventHandler($event)"
-(onDoubleClick)="doubleClickEventHandler($event)"
-(onContextMenu)="contextMenuEventHandler($event)"
+    #tree
+    [nodes]="nodes"
+    [focused]="true"
+    [options]="customTemplateStringOptions"
+    (onToggle)="toggleEventHandler($event)"
+    (onActivate)="activateEventHandler($event)"
+    (onDeactivate)="deactivateEventHandler($event)"
+    (onActiveChanged)="activeChangedEventHandler($event)"
+    (onFocus)="focusEventHandler($event)"
+    (onBlur)="blurEventHandler($event)"
+    (onDoubleClick)="doubleClickEventHandler($event)"
+    (onContextMenu)="contextMenuEventHandler($event)"
 ></ng2tree>
+
 <br>
 <p>Keys:</p>
 down | up | left | right | space | enter
@@ -38,3 +39,10 @@ down | up | left | right | space | enter
 (click)="tree.treeModel.focusedNode.blur()">
 blur
 </button>
+
+<div class="second-tree">
+    <ng2tree
+    #tree0
+    [nodes]="nodes0"
+    ></ng2tree>
+</div>

@@ -15,7 +15,10 @@ import { pick, includes } from 'lodash';//将lodash安装到node-modules中，�
 @Component({
   selector: 'ng2tree',
   templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.css']
+  styleUrls: ['./tree.component.css'],
+  providers:[
+    TreeModel
+  ]
 })
 export class TreeComponent implements OnChanges {
     // delegating to TreeModel service:

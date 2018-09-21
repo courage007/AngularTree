@@ -43,7 +43,13 @@ export const DATA = [
 export class AppComponent {
   title = 'app';
   nodes = DATA ; // Outside static Data
-
+  nodes0 = {
+    id: 'X',
+    name: 'rootx',
+    subTitle: 'the root x',
+    type: 'typex',
+    children: null
+  };
   // Options 调整接口
   customTemplateStringOptions = {
     // displayField: 'subTitle',

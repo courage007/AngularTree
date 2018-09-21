@@ -21,6 +21,13 @@ import { DATA } from '../app/constants/outsideData';
 export class AppComponent {
   title = 'app';
   nodes = DATA ; // Outside static Data
+  nodes0 = [{
+    id: 'x',
+    name: 'rootx',
+    subTitle: 'the root',
+    type: 'typex',
+    children: null
+  }];
 
   // Options 调整接口
   customTemplateStringOptions = {

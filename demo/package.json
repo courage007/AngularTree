@@ -24,6 +24,7 @@
     "@angular/core": ">=2.0.0"
   },
   "dependencies": {
+    "angular-tree-component": "^8.0.0",
     "ng2tree-common": "^2.0.0"
   },
   "devDependencies": {
