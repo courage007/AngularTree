@@ -1,23 +1,22 @@
 # Contents
-- [Introduction and Feature](#introduction-and-feature)
-- [Common Tree Component for Angular 2+](#common-tree-component-for-angular-2+)
+- [Introduction and Features](#introduction-and-features)
+- [Common Tree Component for Angular2 Plus](#common-tree-component-for-angular2-plus)
 
 # Introduction and Features
 Using this Module you can utilize an Angular Tree Component in Angular 2+.
-Feel free to contribute, raise feature requests and make it better. Here is the main Feature:
-## 1. toggle: expand or collapse
-## 2. active: active or deactive
-## 3. focuse: focuse or blur 
-## 4. keys operations:down | up |  left | right | space | enter
-## 5. node operation api: add node | remove node
+Feel free to contribute, raise feature requests and make it better. Here is the main Feature:  
+**1. toggle: expand or collapse**  
+**2. active: active or deactive**  
+**3. focuse: focuse or blur**  
+**4. keys operations:down | up |  left | right | space | enter**  
+**5. node operation api: add node | remove node**  
 
-# Common Tree Component for Angular 2+
+# Common Tree Component for Angular2 Plus
 
 ## Setup
 
 ### Installation
 
-- (1) Install from npm repository:
 ```
 npm install ng2tree-common --save
 
