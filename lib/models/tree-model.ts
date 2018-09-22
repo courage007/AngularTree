@@ -6,7 +6,7 @@ import { first, last, indexOf, findIndex, sortBy } from 'lodash';
 
 @Injectable()
 export class TreeModel {
-    roots:TreeNode[];
+    roots: TreeNode[];
     options: TreeOptions = new TreeOptions();
     static focusedTree = null;
     // focused Node may be not actived 
@@ -116,6 +116,86 @@ export class TreeModel {
         this.fireEvent({ eventName: TREE_EVENTS.onRemoveNode, selectedTreeNode, parent});
     }
 
+    /**
+     * 定位指定树节点
+     * @param needLocatedNode 待定位节点 
+     */
+    locateTreeNode(needLocatedNode: TreeNode){
+        if(needLocatedNode == null){
+            return;
+        }
+
+        let parentNode = needLocatedNode.parent;
+        while( parentNode != null){
+            parentNode.isExpanded = true;
+            parentNode = parentNode.parent;
+        }
+        
+        needLocatedNode.focus();
+
+        needLocatedNode.isActive = false;
+        needLocatedNode.toggleActivated();
+    }
+
+    /**
+     * 通过ID定位树节点
+     * @param nodeID 待查找并定位节点的ID
+     */
+    locateNodeByID(nodeID: string): boolean{
+        let node = this.searchTreeNodeByID(nodeID);
+        if(node == null) {
+            return false;
+        }
+        this.locateTreeNode(node);
+        return true;
+    }
+    
+    /**
+     * 查找指定树节点
+     * @param nodeID 待查找节点ID
+     */
+    searchTreeNodeByID(nodeID: string): TreeNode{
+        return this.searchTreeNode(this.roots, nodeID);
+    }
+
+    
+    /**
+     * 在指定集合中，根据ID查找树节点
+     * @param nodes 树集合
+     * @param nodeID 待查找节点ID
+     */
+    searchTreeNode(nodes: TreeNode[], nodeID: string): TreeNode{
+
+        if(nodes == null || nodes.length <= 0){
+            return null;
+        }
+
+        if(nodeID == null || nodeID.length < 0){
+            return null;
+        }
+
+        let searchedTreeNode: TreeNode = null;
+        
+        nodes.forEach(node => {
+            if(node.idField == nodeID){ //回归
+                searchedTreeNode = node;
+                return;
+            }
+
+            if(node.childrenField == null || node.childrenField.length < 0){ //回归
+                return;
+            }
+
+            const searchedNodeInChildren = this.searchTreeNode(node.childrenField, nodeID);//递推
+            if(searchedNodeInChildren != null){
+                searchedTreeNode = searchedNodeInChildren;
+            }
+            return;//回归
+        });
+
+        return searchedTreeNode; //返回
+    }
+    
     private _treeNodeContentComponent:any;
     get treeNodeContentComponent() { return this._treeNodeContentComponent };
     // if treeNodeTemplate is a component - use it,

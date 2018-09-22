@@ -11,5 +11,6 @@ export const TREE_EVENTS = {
     onUpdateData: 'onUpdateData',
     onMoveNode: 'onMoveNode',
     onAddNode: 'onAddNode',
-    onRemoveNode: 'onRemoveNode'
+    onRemoveNode: 'onRemoveNode',
+    onRightMenuClicked: 'onRightMenuClicked'
 }

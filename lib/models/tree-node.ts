@@ -19,6 +19,9 @@ export class TreeNode{
     get isActive(){
         return this._isActive;
     }
+    set isActive(value){
+        this._isActive = value;
+    }
 
     constructor(public data, parent: TreeNode = null, treeModel: TreeModel){
         
@@ -221,5 +224,10 @@ export class TreeNode{
         to: { parentNode: TreeNode, index: number}){
         tree.moveNode({ from: tree.getDragNode(), to });
         // console.log("dropEventHandler:"+tree.roots);
+    }
+    
+    // 点击右键菜单项
+    rightMenuClicked( event ) {
+        this.fireEvent({ eventName: TREE_EVENTS.onRightMenuClicked, node: this, rawEvent: event });
     }
 }

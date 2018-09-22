@@ -1,3 +1,5 @@
-<div class='tree-node-content'>
+<div class='tree-node-content' *ngIf="!originData.hasRightClickMenu">
   <span>{{ displayData }}</span>
 </div>
+<ng-container #rightMenuContainer>
+</ng-container>

@@ -85,8 +85,12 @@ export class TreeNodeComponent implements OnInit {
     viewContainerRef.clear();
 
     let componentRef = viewContainerRef.createComponent(componentFactory);
-    
-    componentRef.instance.displayData = treeNodeContentItem.displayData;//传入数据
+
+    componentRef.instance.displayData = treeNodeContentItem.displayData; // 传入数据
+    componentRef.instance.originData = this.node.data;
+    componentRef.instance.rightMenuClicked.subscribe(event => {
+      this.node.rightMenuClicked(event);
+    });
 
   }
 

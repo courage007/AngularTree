@@ -40,6 +40,7 @@ export class TreeComponent implements OnChanges {
     @Output() onBlur;
     @Output() onDoubleClick;
     @Output() onContextMenu;
+    @Output() onRightMenuClicked;
   
     constructor(public treeModel:TreeModel) { 
       treeModel.eventNames.forEach((name) => this[name] = new EventEmitter());//customEventName -> new EventEmitter()
@@ -106,5 +107,9 @@ export class TreeComponent implements OnChanges {
         this.treeModel.setFocus(false);
       }
     }
-    
+
+    searchAndLocationNodeById(elementId) {
+      console.log('succeeded to search and location Node By Id in treeComponent:', elementId);
+      this.treeModel.locateNodeByID(elementId);
+    }
 }
