@@ -218,7 +218,7 @@ export class TreeModel {
     //     return AdHocTreeNodeTemplateComponent;
     // }
 
-    isFocused()
+    get isFocused()
     {
         return TreeModel.focusedTree === this;
     }

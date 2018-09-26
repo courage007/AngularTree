@@ -54,13 +54,16 @@ export class TreeComponent implements OnChanges {
       });
     }
     // 优先使用HostListener装饰器绑定事件，而不是使用Directive或Component的host元数据
-    // When binging events to Directive or Component, Angular suggests to prefer to HostListener decorator, 
+    // When binding events to Directive or Component, Angular suggests to prefer to HostListener decorator, 
     // rather than host metadata.
     @HostListener('body: keydown', ['$event']) onKeydown($event) {
       // alert('Pressed a key');
       let focusedNode = this.treeModel.focusedNode;
 
-      if (!this.treeModel.isFocused) return;
+      if (!this.treeModel.isFocused) {
+        return;
+      }
+
       if (includes([KEYS.DOWN, KEYS.UP, KEYS.LEFT,
         KEYS.RIGHT, KEYS.ENTER, KEYS.SPACE], $event.keyCode)) {
         $event.preventDefault();//取消事件的默认动作，实现仅对includes键响应
@@ -102,7 +105,7 @@ export class TreeComponent implements OnChanges {
 
     @HostListener('body: mousedown', ['$event'])  onMousedown($event) {
       // alert('click');
-      let insideClick = $event.target.closest('app-tree');//判断当前dom树上下文中是否包含树组件
+      let insideClick = $event.target.closest('ng2tree');//判断当前dom树上下文中是否包含树组件
       if (!insideClick) {
         this.treeModel.setFocus(false);
       }
