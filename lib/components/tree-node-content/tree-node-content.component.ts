@@ -22,6 +22,7 @@ export class TreeNodeContentComponent implements ITreeNodeContent, OnInit {
     if (this.originData.hasRightClickMenu) {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.originData.rightClickMenuComponent);
       const componentRef = this.rightMenuContainer.createComponent(componentFactory);
+      
       componentRef.instance['nodeData'] = this.originData;
       componentRef.instance['rightMenuClicked'].subscribe((event) => {
         this.rightMenuClicked.emit(event);

@@ -4,11 +4,17 @@ import { TreeModule } from '../../lib/tree.module';
 
 import { AppComponent } from './app.component';
 
+import { ContextMenuModule } from 'ngx-contextmenu';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    ContextMenuModule.forRoot({
+      autoFocus: true,
+      // useBootstrap4: true,
+    }),
     TreeModule,
     BrowserModule
   ],
