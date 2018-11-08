@@ -11,18 +11,18 @@ What's more, I make a develop plan to coding in order which is helpful for anyon
 tree component.
 ## 1. Build a **mix** tree and publish the tree in npm way(**DONE**, 2018.06.29)
 
-## 2. Add CRUD(Create、Retrieve、Update、Delete) API(**DONE**,only create and delete options Now, 2018.07.27)
+## 2. Add CRUD(Create、Retrieve、Update、Delete) API(**DONE**, only create and delete options Now, 2018.07.27)
 
 ## 3. Add checkbox
 
-## 4. Provide global CSS interface
+## 4. Provide a global CSS interface
 
 ## 5. Support **dragable** (**DONE**, 2018.06.28)
 
-## 6. Add Right-click shortcut **ContextMenu**(**DONE**, 2018.07.26)
+## 6. Add Right-Click shortcut **ContextMenu**(**UPDATE**, 2018.11.08)
 
 ## 7. Support **loading** component when Loading data that the tree needed
 
-## 8. Adjust it's name when Panel that using the tree component resized
+## 8. Adjust it's name length when Panel that using the tree component resized
 
 ## 9. Support to memory the tree's state by redux or mobx framework

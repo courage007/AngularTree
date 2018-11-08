@@ -3,13 +3,14 @@
 - [Common Tree Component for Angular2 Plus](#common-tree-component-for-angular2-plus)
 
 # Introduction and Features
-Using this Module you can utilize an Angular Tree Component in Angular 2+.
-Feel free to contribute, raise feature requests and make it better. Here is the main Feature:  
+Using this Module you can utilize an Angular Tree Component in Angular 2+.  
+Feel free to contribute, raise feature requests and make it better. Here is the main Features:  
 **1. toggle: expand or collapse**  
 **2. active: active or deactive**  
-**3. focuse: focuse or blur**  
+**3. focus: focus or blur**  
 **4. keys operations:down | up |  left | right | space | enter**  
-**5. node operation api: add node | remove node**  
+**5. node operation api: add node | remove node**
+**6. contextmenu demo added by catching up with the ContextMenu event**
 
 # Common Tree Component for Angular2 Plus
 
