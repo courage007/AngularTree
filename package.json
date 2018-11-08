@@ -1,6 +1,6 @@
 {
   "name": "ng2tree-common",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A Simple and Universal angular2+ tree component",
   "author": "courage007 <wang_xufa@163.com>",
   "homepage": "https://github.com/courage007/AngularTree",
@@ -44,10 +44,11 @@
     "@angular/core": ">=2.0.0"
   },
   "dependencies": {
-    "@angular/cdk": "^5.2.0",
-    "ngx-contextmenu": "^4.2.0"
+
   },
   "devDependencies": {
+    "@angular/cdk": "^5.2.0",
+    "ngx-contextmenu": "^4.2.0",
     "@angular/animations": "^5.2.0",
     "@angular/cli": "~1.7.4",
     "@angular/common": "^5.2.0",
