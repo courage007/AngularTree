@@ -131,8 +131,6 @@ export class TreeModel {
             parentNode = parentNode.parent;
         }
         
-        needLocatedNode.focus();
-
         needLocatedNode.isActive = false;
         needLocatedNode.toggleActivated();
     }
