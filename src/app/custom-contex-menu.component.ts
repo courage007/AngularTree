@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter, OnInit, ComponentFactoryResolve
 @Component({
   selector: 'custom-context-menu',
   template: `
-  <context-menu #contextmenu>
+  <context-menu #customContextmenu>
     <ng-template contextMenuItem (execute)="showMessage('Hi, ' + $event.item.name); go($event.item)">
       Go!
     </ng-template>
@@ -19,7 +19,6 @@ import { Component, Input, Output, EventEmitter, OnInit, ComponentFactoryResolve
   }
   `]
 })
-
 
 export class CustomContexMenuComponent implements OnInit {
   testData = 'custom contextMenu test';

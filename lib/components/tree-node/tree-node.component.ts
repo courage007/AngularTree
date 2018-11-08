@@ -1,10 +1,9 @@
-import { Component, ViewChild, OnInit, Input, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, ComponentFactoryResolver, ViewContainerRef, ElementRef } from '@angular/core';
 import { TreeNode } from '../../models/tree-node';
 import { TreeModel } from '../../models/tree-model';
 import { TreeNodeContentDirective } from '../../directives/tree-node-content.directive';
 import { TreeNodeContentItem } from '../../models/tree-node-content-item';
 import { TreeNodeContentComponent } from '../tree-node-content/tree-node-content.component';
-import { CustomContexMenuComponent } from './custom-contex-menu.component';
 import { TREE_EVENTS } from '../../constants/events';
 
 @Component({
@@ -57,9 +56,9 @@ export class TreeNodeComponent implements OnInit {
 
   // ViewChild 是属性装饰器，用来从模板视图中获取匹配的元素
   @ViewChild(TreeNodeContentDirective) treeNodeContentHost: TreeNodeContentDirective;
-
-  @ViewChild('contextMenuContainer', { read: ViewContainerRef }) contextMenuContainer: ViewContainerRef;
-
+  
+  @ViewChild('nodeContentWrapper') nodeContentWrapper: ElementRef;
+  
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
     viewContainerRef: ViewContainerRef) {
 
@@ -99,13 +98,6 @@ export class TreeNodeComponent implements OnInit {
   contextMenu(rawEvent: MouseEvent) {
     rawEvent.preventDefault();
     
-    // 动态添加组件
-    this.contextMenuContainer.clear();
-    const contexMenuComponentFactory = this.componentFactoryResolver.resolveComponentFactory(CustomContexMenuComponent);
-    const contexMenuComponentRef = this.contextMenuContainer.createComponent(contexMenuComponentFactory);
-
-    contexMenuComponentRef.instance.testData = 'tree node传递数据到 context menu';
-
-    this.node.fireEvent({ eventName: TREE_EVENTS.onContextMenu, node: this, rawEvent: rawEvent }); 
+    this.node.fireEvent({ eventName: TREE_EVENTS.onContextMenu, node: this, rawEvent: rawEvent, item: this.nodeContentWrapper }); 
   }
 }

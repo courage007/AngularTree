@@ -4,7 +4,7 @@ import { TreeModule } from '../../lib/tree.module';
 
 import { AppComponent } from './app.component';
 
-import { ContextMenuModule } from 'ngx-contextmenu';
+import { ContextMenuModule, ContextMenuComponent } from 'ngx-contextmenu';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,6 @@ import { ContextMenuModule } from 'ngx-contextmenu';
   ],
   bootstrap: [
     AppComponent
-  ],
-  entryComponents: [
   ]
 })
 export class AppModule { }

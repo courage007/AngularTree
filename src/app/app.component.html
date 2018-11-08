@@ -46,3 +46,13 @@ blur
     [nodes]="nodes0"
     ></ng2tree>
 </div>
+
+<context-menu #customContextmenu>
+    <ng-template contextMenuItem (execute)="showMessage($event)">
+        Go!
+    </ng-template>
+    <ng-template contextMenuItem divider="true" role="separator" ></ng-template>
+    <ng-template contextMenuItem let-item (execute)="showMessage($event.item)">
+        Bye
+    </ng-template>
+</context-menu>

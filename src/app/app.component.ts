@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { DATA } from '../app/constants/outsideData';
-
+import { ContextMenuService, ContextMenuComponent } from 'ngx-contextmenu';
 
 export const mockTree = [
   {
@@ -53,6 +53,9 @@ export const mockTree = [
       margin: 0 3px;
     }`
   ],
+  entryComponents:[
+    ContextMenuComponent
+  ]
 })
 
 export class AppComponent {
@@ -66,6 +69,11 @@ export class AppComponent {
     children: null
   }];
 
+  // Optional
+
+  constructor(private contextMenuService: ContextMenuService, private componentFactoryResolver: ComponentFactoryResolver) {
+
+  }
 
   updateTreeData() {
     this.nodes = mockTree;
@@ -90,5 +98,40 @@ export class AppComponent {
   doubleClickEventHandler($event) {
     console.log("Double Click Handler. The event is:", $event);
   }
-  contextMenuEventHandler = ($event) => console.log("Show ContextMenu:with or without custom contex menu", $event);
+  
+  @ViewChild('customContextmenu') customContextmenu: ContextMenuComponent;
+  contextMenuEventHandler(param) {
+    const $event = param.rawEvent;
+    const item = param.item;
+
+    $event.preventDefault();
+    
+    // 动态创建自定义右键菜单
+    this.contextMenuService.show.next({
+      // Optional - if unspecified, all context menu components will open
+      contextMenu: this.customContextmenu,
+      event: $event,
+      item: item,
+    });
+
+    $event.stopPropagation();
+  }
+
+  public items: any[] = [{
+    name: 'One',
+    url: '/one',
+  }, {
+    name: 'Two',
+    url: '/two',
+  }];
+
+  showMessage(message: any) {
+    console.log(message);
+  }
+
+  go(item: any) {
+    // this.router.navigateByUrl(item.url);
+  }
+
+
 }
