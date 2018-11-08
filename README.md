@@ -9,7 +9,7 @@ Feel free to contribute, raise feature requests and make it better. Here is the 
 **2. active: active or deactive**  
 **3. focus: focus or blur**  
 **4. keys operations:down | up |  left | right | space | enter**  
-**5. node operation api: add node | remove node**
+**5. node operation api: add node | remove node**  
 **6. contextmenu demo added by catching up with the ContextMenu event**
 
 # Common Tree Component for Angular2 Plus
